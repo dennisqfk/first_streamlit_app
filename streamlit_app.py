@@ -40,10 +40,10 @@ my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)
+fruit_dataframe = streamlit.dataframe(my_data_rows)
 
-add_fruit = streamlit.text_input('What fruit would you like to add?','Kiwi')
-my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values" + add_fruit)
+add_fruit = streamlit.text_input('What fruit would you like to add?')
+fruit_dataframe = fruit_dataframe.insert(add_fruit)
 
 my_cur.execute("select * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
